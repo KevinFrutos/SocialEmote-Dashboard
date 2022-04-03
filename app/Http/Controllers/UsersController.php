@@ -82,6 +82,11 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $publication = Register::findOrFail($id);
+        $publication->delete();
+
+        return view('users.index', [
+            'registers' => Register::all(),
+        ]);
     }
 }

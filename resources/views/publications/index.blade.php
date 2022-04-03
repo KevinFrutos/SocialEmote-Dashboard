@@ -12,6 +12,13 @@
                 <div class="default-publications">
                     <p>{{ $post['user'] }}</p>
                     <p>{{ $post['description'] }}</p>
+                    <p>Likes: {{ count($post['likes']) }}</p>
+                    <p>Comments: {{ count($post['comments']) }}</p>
+                    <form method="POST" action="{{ route('publications.destroy', ['publication' => $post->id]) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
                 </div>
             @endforeach
         @else

@@ -82,6 +82,11 @@ class SessionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $publication = Session::findOrFail($id);
+        $publication->delete();
+
+        return view('sessions.index', [
+            'sessions' => Session::all(),
+        ]);
     }
 }

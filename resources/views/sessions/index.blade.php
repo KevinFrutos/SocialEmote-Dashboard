@@ -11,6 +11,11 @@
             @foreach ($sessions as $session)
                 <div>
                     <p>{{ $session['user'] }}</p>
+                    <form method="POST" action="{{ route('sessions.destroy', ['session' => $session->id]) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
                 </div>
             @endforeach
         @else

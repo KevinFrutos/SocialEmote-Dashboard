@@ -82,6 +82,11 @@ class PublicationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $publication = Publication::findOrFail($id);
+        $publication->delete();
+
+        return view('publications.index', [
+            'publications' => Publication::orderBy('publication_date', 'desc')->get(),
+        ]);
     }
 }

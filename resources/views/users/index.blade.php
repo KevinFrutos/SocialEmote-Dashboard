@@ -16,6 +16,11 @@
                     <p>Email: {{ $register['email'] }}</p>
                     <p>Followers: {{ count($register['followers']) }}</p>
                     <p>Following: {{ count($register['following']) }}</p>
+                    <form method="POST" action="{{ route('users.destroy', ['user' => $register->id]) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
                 </div>
             @endforeach
         @else
