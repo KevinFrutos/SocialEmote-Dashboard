@@ -21,6 +21,7 @@
                         @method('DELETE')
                         <button type="submit">Delete</button>
                     </form>
+                    <a href="{{ route('users.edit', ['user' => $register->id]) }}">Edit</a>
                 </div>
             @endforeach
         @else
